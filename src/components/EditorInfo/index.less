@@ -1,0 +1,27 @@
+@import '../../../../node_modules/codemirror/lib/codemirror.css';
+@import '../../../../node_modules/codemirror/theme/material.css';
+.editorInfo {
+  flex: 1;
+  background: #fafafa;
+}
+.CodeMirror-vscrollbar,.CodeMirror-hscrollbar {
+	/* 设置滚动条的样式 */
+	&::-webkit-scrollbar {
+	    width: 10px;
+	    height: 10px;
+	}
+	/* 滚动槽 */
+	&::-webkit-scrollbar-track {
+	    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+	    /* background-color: red; */
+	}
+	/* 滚动条滑块 */
+	&::-webkit-scrollbar-thumb {
+	    border-radius: 10px;
+	    background: rgba(0, 0, 0, 0.45);
+	    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); */
+	}
+}
+.CodeMirror-scrollbar-filler {
+	display: none!important;
+}
