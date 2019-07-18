@@ -83,7 +83,7 @@ class DetailForm extends React.Component {
     }
     return (
       <Fragment>
-        <Item label="文本" {...inlineFormItemLayout}>
+        <Item colon={false} label="名称" {...inlineFormItemLayout}>
           {form.getFieldDecorator('label', {
             initialValue: label,
           })(<Input onBlur={this.handleSubmit} />)}
@@ -98,12 +98,12 @@ class DetailForm extends React.Component {
 
     return (
       <Fragment>
-        <Item label="文本" {...inlineFormItemLayout}>
+        <Item colon={false} label="名称" {...inlineFormItemLayout}>
           {form.getFieldDecorator('label', {
             initialValue: label,
           })(<Input onBlur={this.handleSubmit} />)}
         </Item>
-        <Item label="线条类型" {...inlineFormItemLayout}>
+        <Item colon={false} label="线条类型" {...inlineFormItemLayout}>
           {form.getFieldDecorator('shape', {
             initialValue: shape,
           })(this.renderEdgeShapeSelect())}
@@ -117,7 +117,7 @@ class DetailForm extends React.Component {
     const { label = '新建分组' } = this.item.getModel();
 
     return (
-      <Item label="文本" {...inlineFormItemLayout}>
+      <Item colon={false} label="名称" {...inlineFormItemLayout}>
         {form.getFieldDecorator('label', {
           initialValue: label,
         })(<Input onBlur={this.handleSubmit} />)}
@@ -130,7 +130,7 @@ class DetailForm extends React.Component {
     const { projectName } = projectData;
 
     return (
-      <Item label="项目名称" {...inlineFormItemLayout}>
+      <Item colon={false} label="项目名称" {...inlineFormItemLayout}>
         {form.getFieldDecorator('label', {
           initialValue: projectName,
         })(<Input onBlur={this.handleSubmit} />)}
@@ -143,7 +143,7 @@ class DetailForm extends React.Component {
     const { timeSetter } = this.item.getModel();
 
     return (
-      <Item label="定时器" {...inlineFormItemLayout}>
+      <Item colon={false} label="定时器" {...inlineFormItemLayout}>
         {form.getFieldDecorator('timeSetter', {
           initialValue: timeSetter,
         })(<Input onBlur={this.handleSubmit} />)}
@@ -161,11 +161,11 @@ class DetailForm extends React.Component {
       id = this.item.getModel().nodeName_id;
     }
     // 选择主题是，如果不是node面板则不显示
-    if (id == 'theme' && type != 'node') {
+    if (id == 'mission' && type != 'node') {
       return '';
     }
     return (
-      <Card type="inner" size="small" title={title||nameMap[type]} bordered={false}>
+      <Card type="inner" size="small" title={nameMap[type]} bordered={false}>
         <Form onSubmit={this.handleSubmit}>
           {type === 'node' && this.renderNodeDetail()}
           {type === 'edge' && this.renderEdgeDetail()}

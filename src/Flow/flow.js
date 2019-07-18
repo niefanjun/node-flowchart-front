@@ -74,11 +74,7 @@ class FlowPageInner extends React.Component {
             <EditorMinimap />
           </Col>
           <Col span={14} className={styles.editorContent}>
-            <Flow className={styles.flow} data={this.state.flowData} onClick={
-              (e) => {this.selectNode(e)}
-            } onDrop={
-              (e) => {console.log(e)}
-            }/>
+            <Flow className={styles.flow} data={this.state.flowData} />
           </Col>
           <Col span={6} className={styles.editorSidebar}>
             <FlowDetailPanel editorInfoImportFunc={(value) => this.importFunction(value)} />
