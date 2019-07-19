@@ -6,7 +6,7 @@ import MindPage from './Mind';
 import KoniPage from './Koni';
 
 ReactDOM.render(
-  <Router basename="/page/index">
+  <Router basename="/demo-flow">
 		{/*<Route path="/flow" component={FlowPage} />*/}
     <Route path="/flow/:flowId" component={FlowPage} />
     <Route path="/mind" component={MindPage} />
