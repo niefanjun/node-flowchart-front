@@ -9,6 +9,7 @@ import { FlowDetailPanel } from '../components/EditorDetailPanel';
 import EditorInfo from '../components/EditorInfo';
 import beautify from 'js-beautify';
 import styles from './index.less';
+import http from '../http';
 
 
 
@@ -25,10 +26,20 @@ class FlowPageInner extends React.Component {
     // 根据不同的flowID来读取对应的数据，如果为new则表示新建
     this.loadFlow(this.props.match.params.flowId);
   }
-  saveFunction(value) {
-    //console.log(value);
+  async saveFunction(value) {
+    const { propsAPI } = this.props;
     const editorinfovalue = beautify(JSON.stringify(value));
     console.log('上传桌布数据:',editorinfovalue);
+    // 获取项目id
+    let canvas_id = this.getCanvasId();
+    if (canvas_id) {
+      let data = await http.updateTreeData({
+        id: canvas_id,
+        tree: value
+      })
+      console.log(data);
+      propsAPI.read(data.tree);
+    }
     /*this.setState({
       editorinfovalue: editorinfovalue
     })*/
@@ -52,12 +63,23 @@ class FlowPageInner extends React.Component {
       })
     }
   }
-  loadFlow(flowId) {
+  async loadFlow(flowId) {
     const { propsAPI } = this.props;
     if (flowId == 'new') {
       propsAPI.read({});
     } else {
-      propsAPI.read({"nodes":[{"type":"node","size":"72*72","shape":"flow-circle","color":"#FA8C16","label":"Start","x":459.3374938964844,"y":254.20000076293945,"id":"6a8e345b","index":0}]});
+      let data = await http.getTreeData({
+        id: '123456'
+      });
+      propsAPI.read(data.tree);
+    }
+  }
+  getCanvasId() {
+    let canvas_id = this.props.match.params.flowId;
+    if (canvas_id == 'new') {
+      return null;
+    } else {
+      return canvas_id;
     }
   }
   render() {

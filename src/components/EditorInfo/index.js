@@ -19,6 +19,10 @@ class EditorInfo extends React.Component {
 		this.value = '';
 		//this.codeMirrorValue = 'test';
 	}
+	componentDidMount(){
+		let height = this.refs.containerBox.clientHeight;
+		this.refs.containerBox.style.height = height +'px';
+	}
 	importFunc() {
 		const { propsAPI } = this.props;
 		try {
@@ -30,17 +34,18 @@ class EditorInfo extends React.Component {
 		}
 	}
 	render() {
-		const { propsAPI } = this.props;
+		/*const { propsAPI } = this.props;
 		const { getSelected } = propsAPI;
 		let selectModel = getSelected()[0].getModel();
 		if (selectModel.nodeName_id == 'theme') {
 			return '';
 		}
-		const editorinfovalue = beautify(JSON.stringify(selectModel));
+		const editorinfovalue = beautify(JSON.stringify(selectModel));*/
+		const editorinfovalue = '';
 		return (
 			<div className={style.editorInfo}>
-				<Card type="inner" size="small" title="脚本编辑" bordered={false}
-					actions={[<Icon type="save" onClick={() => this.importFunc()}/>]}>
+				<Card type="inner" size="small" title="脚本编辑" bordered={false}>
+					<div className="containerBox" ref="containerBox">
 					<CodeMirror
 						value={editorinfovalue}
 						options={this.codeMirrorOption}
@@ -48,6 +53,7 @@ class EditorInfo extends React.Component {
 							this.value = value;
 						}}
 					/>
+					</div>
 				</Card>
 			</div>
 		)

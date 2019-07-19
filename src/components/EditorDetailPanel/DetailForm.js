@@ -166,7 +166,7 @@ class DetailForm extends React.Component {
     }
     return (
       <Card type="inner" size="small" title={nameMap[type]} bordered={false}>
-        <Form onSubmit={this.handleSubmit}>
+        <Form labelAlign="left" onSubmit={this.handleSubmit}>
           {type === 'node' && this.renderNodeDetail()}
           {type === 'edge' && this.renderEdgeDetail()}
           {type === 'group' && this.renderGroupDetail()}

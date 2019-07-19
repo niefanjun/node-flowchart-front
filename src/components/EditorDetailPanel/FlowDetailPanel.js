@@ -8,13 +8,13 @@ import EditorInfo from '../EditorInfo';
 const { Item } = Form;
 class FlowDetailPanel extends React.Component {
   render() {
-    let props = this.props;
+    let {editorInfoImportFunc} = this.props;
     return (
       <DetailPanel className={styles.detailPanel}>
-        <NodePanel>
-          <DetailForm type="node" />
-          <DetailForm type="plan" />
-          <EditorInfo importFunc={props.editorInfoImportFunc}/>
+        <NodePanel className="node-container">
+          <DetailForm type="node"/>
+          <DetailForm type="plan"/>
+          <EditorInfo importFunc={editorInfoImportFunc}/>
         </NodePanel>
         <EdgePanel>
           <DetailForm type="edge" />
