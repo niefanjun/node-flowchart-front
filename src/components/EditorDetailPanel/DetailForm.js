@@ -17,7 +17,7 @@ const inlineFormItemLayout = {
 
 // 节点id与汉字名称对应关系
 const nameMap = {
-  node: '节点',
+  node: '信息',
   edge: '连线',
   group: '分组',
   canvas: '项目信息',
@@ -74,13 +74,6 @@ class DetailForm extends React.Component {
     const { form } = this.props;
     const { label,test } = this.item.getModel();
     let item = this.item;
-    let labelName = null;
-    switch(item.model.nodeName_self) {
-      case 'theme':
-        labelName = '主题';
-      case 'mission':
-        labelName = '任务'
-    }
     return (
       <Fragment>
         <Item colon={false} label="名称" {...inlineFormItemLayout}>
@@ -140,12 +133,12 @@ class DetailForm extends React.Component {
 
   renderPlanDetail = () => {
     const { form } = this.props;
-    const { timeSetter } = this.item.getModel();
+    const { cron } = this.item.getModel();
 
     return (
       <Item colon={false} label="定时器" {...inlineFormItemLayout}>
-        {form.getFieldDecorator('timeSetter', {
-          initialValue: timeSetter,
+        {form.getFieldDecorator('cron', {
+          initialValue: cron,
         })(<Input onBlur={this.handleSubmit} />)}
       </Item>
     );
@@ -153,19 +146,24 @@ class DetailForm extends React.Component {
 
   render() {
     const { type } = this.props;
-    let title = null;
     let id = null;
+    let title = nameMap[type];
     if (this.item) {
       //return null;
-      title = this.item.getModel().nodeName_name;
-      id = this.item.getModel().nodeName_id;
+      id = this.item.getModel().nodeName_type;
     }
     // 选择主题是，如果不是node面板则不显示
     if (id == 'mission' && type != 'node') {
       return '';
     }
+    if (id == 'mission') {
+      title = "任务信息"
+    }
+    if (id == 'theme') {
+      title = "主题信息"
+    }
     return (
-      <Card type="inner" size="small" title={nameMap[type]} bordered={false}>
+      <Card type="inner" size="small" title={title} bordered={false}>
         <Form labelAlign="left" onSubmit={this.handleSubmit}>
           {type === 'node' && this.renderNodeDetail()}
           {type === 'edge' && this.renderEdgeDetail()}
