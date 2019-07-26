@@ -1,52 +1,17 @@
-.editor {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-}
-.editorHd {
-  padding: 8px;
-  border: 1px solid #e6e9ed;
-}
-.editorBd {
-  flex: 1;
-}
-.editorSidebar,
-.editorContent {
-  display: flex;
-  flex-direction: column;
-}
-.editorSidebar {
-  background: #fafafa;
-}
-.editorSidebar:first-child {
-  border-right: 1px solid #e6e9ed;
-}
-.editorSidebar:last-child {
-  border-left: 1px solid #e6e9ed;
-}
-.flow,
-.mind,
-.koni {
-  flex: 1;
-  height: 0;
-}
-.ant-card-head {
-  border-top: 1px solid #e8e8e8;
-}
-.detailPanel {
+.itemPanel {
   flex: 1;
   background: #fafafa;
 }
-.detailPanel .node-container {
-  height: 100%;
+.itemPanel .ant-card {
+  background: #fafafa;
+}
+.itemPanel .ant-card-body {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
-.detailPanel .ant-card {
-  background: #fafafa;
+.itemPanel .ant-card-body > div {
+  margin-bottom: 16px;
 }
 .toolbar {
   display: flex;
@@ -107,20 +72,55 @@
 .contextMenu .disable .item:hover {
   background: #fff;
 }
-.itemPanel {
+.editor {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+.editorHd {
+  padding: 8px;
+  border: 1px solid #e6e9ed;
+}
+.editorBd {
+  flex: 1;
+}
+.editorSidebar,
+.editorContent {
+  display: flex;
+  flex-direction: column;
+}
+.editorSidebar {
+  background: #fafafa;
+}
+.editorSidebar:first-child {
+  border-right: 1px solid #e6e9ed;
+}
+.editorSidebar:last-child {
+  border-left: 1px solid #e6e9ed;
+}
+.flow,
+.mind,
+.koni {
+  flex: 1;
+  height: 0;
+}
+.ant-card-head {
+  border-top: 1px solid #e8e8e8;
+}
+.detailPanel {
   flex: 1;
   background: #fafafa;
 }
-.itemPanel .ant-card {
-  background: #fafafa;
-}
-.itemPanel .ant-card-body {
+.detailPanel .node-container {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
-.itemPanel .ant-card-body > div {
-  margin-bottom: 16px;
+.detailPanel .ant-card {
+  background: #fafafa;
 }
 /* BASICS */
 
